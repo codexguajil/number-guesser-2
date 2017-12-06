@@ -11,14 +11,11 @@ var clearButton = document.querySelector('.clear')
 var resetButton = document.querySelector('.reset')
 var minRangeInput = document.querySelector('.min-range')
 var maxRangeInput = document.querySelector('.max-range')
-var minValue = minRangeInput.value
-var maxValue = maxRangeInput.value
-var min = parseInt(minValue) || 10
-var max = parseInt(maxValue) || 15
 var rangeText = document.querySelector('.range-text')
 
 clearButton.addEventListener('click', clearInputField)
-guessButton.addEventListener('click', displayGuess);
+guessButton.addEventListener('click', displayGuess)
+resetButton.addEventListener('click', resetGame)
 numberInput.addEventListener('keyup', enableOrDisableBtn)
 minRangeInput.addEventListener('keyup', randomNumberGenerator)
 maxRangeInput.addEventListener('keyup', randomNumberGenerator)
@@ -32,20 +29,16 @@ function enableOrDisableBtn() {
     )
 }
 
-function updateNumberRange() {
-  randomNumberGenerator()
-  if (min > max) {
-    console.log('not a correct range')
-    rangeText.innerText = 'not a range!'
-  } else if (max > min) {
-    rangeText.innerText = ''
-  }
-}
-
 function randomNumberGenerator() {
+  var minValue = minRangeInput.value
+  var maxValue = maxRangeInput.value
+  window.min = parseInt(minValue) || 10
+  window.max = parseInt(maxValue) || 15
   if (min > max) {
     console.log('not a correct range')
     rangeText.innerText = 'not a range!'
+    randomNumber = ''
+    return
   } else if (max > min) {
     rangeText.innerText = ''
   }
@@ -62,11 +55,18 @@ function clearInputField() {
   numberInput.value = ''
 }
 
+function resetGame() {
+  location.reload()
+}
+
 function guessFeedbackDisplay() {
   console.log('hello')
   var guessValue = parseInt(numberInput.value)
   guessDisplay.innerText = guessValue
-  if (guessValue < min || guessValue > max) {
+  if(randomNumber === '') {
+    guessFeedback.innerText = 'You don\'t have a correct range!'
+  }
+  else if (guessValue < min || guessValue > max) {
     guessFeedback.innerText = 'Outside of range!'
   }
   else if(guessDisplay.innerText === 'NaN') {
