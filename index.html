@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Guesser 2</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+  <h1>Number <span>Guesser</span></h1>
+    <div class="input-fields">
+      <div class="edit-range-field">
+        <h3>Min: </h3><input class="min-range">
+        <h3>Max: </h3><input class="max-range">
+        <article class="range-text"></article>
+      </div>
+      <div>
+        <input class="number-input" placeholder="Enter your guess">
+      </div>
+      <button class="submit">Guess</button>
+      <button class="clear">Clear</button>
+    </div>
+  <section class="guess-display-section">
+    <h2>Your last guess was</h2>
+    <article class="guess-display">#</article>
+    <h2 class="guess-feedback">....</h2>
+  </section>
+  <section class="reset-section">
+    <button class="reset">Reset</button>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  background-color: #929497;
+  border: none;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 200;
+  height: 40px;
+  letter-spacing: 1.3px;
+  width: 180px;
+}
+
+.disabled {
+  background: #D0D2D3;
+}
+
+.edit-range-field {
+  text-align: center;
+  margin: 0;
+}
+
+.guess-display {
+  color: #EB008B;
+  font-size: 180px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.guess-display-section {
+  margin-top: 70px;
+  text-align: center;
+}
+
+h1 {
+  background: #404041;
+  color: #ED458B;
+  font-family: sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  height: 80px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding-top: 20px;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  color: #929497;
+  display: inline;
+}
+
+.input-fields {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.min-range,
+.max-range {
+  width: 140px;
+}
+
+.number-input {
+  border: #D2D4D5 1.5px solid;
+  font-size: 25px;
+  font-weight: 200;
+  height: 30px;
+  letter-spacing: 1.3px;
+  margin: 20px 0 30px 0;
+  opacity: 0.6;
+  padding: 3px 0 5px 8px;
+  width: 380px;
+}
+
+.reset {
+  font-size: 20px;
+  height: 35px;
+  margin-bottom: 50px;
+  width: 400px;
+}
+
+.reset-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+span {
+  color: #E6E7E8;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+.submit {
+  margin-right: 25px;
+}
+
+button:hover {
+  background: #EB008B;
+  cursor: pointer;
+}
