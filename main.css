@@ -102,6 +102,10 @@ span {
   margin-right: 25px;
 }
 
+button:focus {
+  outline: none;
+}
+
 button:hover {
   background: #EB008B;
   cursor: pointer;

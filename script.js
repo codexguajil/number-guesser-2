@@ -1,46 +1,29 @@
-window.onload = randomNumberGenerator();  
+window.onload = function() {randomNumberGenerator();  
                 enableOrDisableBtn();
+              }
 
 var numberInput = document.querySelector('.number-input')
 var guessButton = document.querySelector('.submit')
 var guessDisplay = document.querySelector('.guess-display')
 var guessFeedback = document.querySelector('.guess-feedback')
+var guessValue = parseInt(numberInput.value)
 var clearButton = document.querySelector('.clear')
 var resetButton = document.querySelector('.reset')
 var minRangeInput = document.querySelector('.min-range')
 var maxRangeInput = document.querySelector('.max-range')
 var minValue = minRangeInput.value
 var maxValue = maxRangeInput.value
-var min = parseInt(minValue)
-var max = parseInt(maxValue)
-var guessValue = parseInt(numberInput.value)
+var min = parseInt(minValue) || 10
+var max = parseInt(maxValue) || 15
 var rangeText = document.querySelector('.range-text')
 
-
-
+clearButton.addEventListener('click', clearInputField)
 guessButton.addEventListener('click', displayGuess);
 numberInput.addEventListener('keyup', enableOrDisableBtn)
 minRangeInput.addEventListener('keyup', randomNumberGenerator)
 maxRangeInput.addEventListener('keyup', randomNumberGenerator)
 
-// function updateMinRange() {
-//   var newMinRange = minRangeInput.value
-//   minValue = parseInt(newMinRange)
-//   randomNumberGenerator();
-// }
-
-// function updateMaxRange() {
-//   var newMaxRange = maxRangeInput.value
-//   maxValue = parseInt(newMaxRange)
-//   console.log(newMaxRange)
-//   randomNumberGenerator();
-// }
-
 function enableOrDisableBtn() {
-  var numberInput = document.querySelector('.number-input')
-  var clearButton = document.querySelector('.clear')
-  var resetButton = document.querySelector('.reset')
-  var guessButton = document.querySelector('.submit')
   if (numberInput.value === '') {
     clearButton.classList.add('disabled') & resetButton.classList.add('disabled') & guessButton.classList.add('disabled')
   }
@@ -50,12 +33,6 @@ function enableOrDisableBtn() {
 }
 
 function updateNumberRange() {
-  var minRangeInput = document.querySelector('.min-range')
-  var maxRangeInput = document.querySelector('.max-range')
-  var minValue = parseInt(minRangeInput.value)
-  var maxValue = parseInt(maxRangeInput.value)
-  var min = minValue
-  var max = maxValue
   randomNumberGenerator()
   if (min > max) {
     console.log('not a correct range')
@@ -66,13 +43,6 @@ function updateNumberRange() {
 }
 
 function randomNumberGenerator() {
-  var minRangeInput = document.querySelector('.min-range')
-  var maxRangeInput = document.querySelector('.max-range')
-  var minValue = parseInt(minRangeInput.value)
-  var maxValue = parseInt(maxRangeInput.value)
-  var rangeText = document.querySelector('.range-text')
-  var min = minValue || 10
-  var max = maxValue || 15
   if (min > max) {
     console.log('not a correct range')
     rangeText.innerText = 'not a range!'
@@ -84,15 +54,18 @@ function randomNumberGenerator() {
 }
 
 function displayGuess() {
-  var guessValue = parseInt(numberInput.value)
-  guessDisplay.innerText = parseInt(guessValue)
+  guessDisplay.innerText = parseInt(numberInput.value)
   guessFeedbackDisplay()
+}
+
+function clearInputField() {
+  numberInput.value = ''
 }
 
 function guessFeedbackDisplay() {
   console.log('hello')
   var guessValue = parseInt(numberInput.value)
-  // guessDisplay.innerText = guessValue
+  guessDisplay.innerText = guessValue
   if (guessValue < min || guessValue > max) {
     guessFeedback.innerText = 'Outside of range!'
   }
