@@ -23,26 +23,24 @@ maxRangeInput.addEventListener('keyup', randomNumberGenerator)
 function enableOrDisableBtn() {
   if (numberInput.value === '') {
     clearButton.classList.add('disabled') & resetButton.classList.add('disabled') & guessButton.classList.add('disabled')
-  }
-  else (
+  } else {
     clearButton.classList.remove('disabled') & resetButton.classList.remove('disabled') & guessButton.classList.remove('disabled')
-    )
+  }
 }
 
 function randomNumberGenerator() {
-  var minValue = minRangeInput.value
-  var maxValue = maxRangeInput.value
-  window.min = parseInt(minValue) || 10
-  window.max = parseInt(maxValue) || 15
+  window.min = parseInt(minRangeInput.value) || Math.floor(Math.random())
+  window.max = parseInt(maxRangeInput.value) || 40
   if (min > max) {
-    console.log('not a correct range')
     rangeText.innerText = 'not a range!'
     randomNumber = ''
     return
-  } else if (max > min) {
+  } else {
     rangeText.innerText = ''
+    randomNumber = Math.floor(min + Math.random() * ((max - min) + 1))
+    minRangeInput.value = window.min
+    maxRangeInput.value = window.max
   }
-  randomNumber = Math.floor(min + Math.random() * ((max - min) + 1))
   console.log(randomNumber)
 }
 
@@ -60,29 +58,31 @@ function resetGame() {
 }
 
 function guessFeedbackDisplay() {
-  console.log('hello')
   var guessValue = parseInt(numberInput.value)
   guessDisplay.innerText = guessValue
+  document.querySelector('.guess-heading').innerText = 'Your last guess was'
   if(randomNumber === '') {
+    document.querySelector('h2').innerText = ''
+    guessDisplay.innerText = ''
     guessFeedback.innerText = 'You don\'t have a correct range!'
-  }
-  else if (guessValue < min || guessValue > max) {
+  } else if (guessValue < min || guessValue > max) {
     guessFeedback.innerText = 'Outside of range!'
-  }
-  else if(guessDisplay.innerText === 'NaN') {
+  } else if(guessDisplay.innerText === 'NaN') {
     guessFeedback.innerText = 'Not a number!'
-    console.log(guessValue)
-  }
-  else if (guessValue > randomNumber) {
+  } else if (guessValue > randomNumber) {
     guessFeedback.innerText = 'That is too high!'
-  }
-  else if (guessValue < randomNumber) {
+  } else if (guessValue < randomNumber) {
     guessFeedback.innerText = 'That is too low!'
-  }
-  else if (guessValue === randomNumber) {
+  } else if (guessValue === randomNumber) {
     guessFeedback.innerText = 'Boom!'
-
-    randomNumberGenerator()
+    increaseRange()
   }
-  console.log('done!')
+}
+
+function increaseRange() {
+  min -= 10
+  max += 10
+  minRangeInput.value = min
+  maxRangeInput.value = max
+  randomNumberGenerator()
 }
